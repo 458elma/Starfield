@@ -24,9 +24,9 @@ void draw()
     	star[i].move();
     	star[i].wrap();
 	}
-	/*noStroke();
+	noStroke();
     fill(0,0,0);
-    ellipse(200,200,150,150);*/
+    ellipse(200,200,100,100);
 }
 void mousePressed() {
 	for(int i = 0;i<star.length; i++) {
@@ -46,10 +46,10 @@ class NormalParticle implements Particle
 	double theX,theY,theAngle,theSpeed;
 	int theClr,theSize;
 	NormalParticle() {
-		theX = (Math.random()*50)+175;
-		theY = (Math.random()*50)+175;
+		theX = (Math.random()*25)+187.5;
+		theY = (Math.random()*25)+187.5;
 		theAngle = Math.random()*(2*Math.PI);
-		theSpeed = (Math.random()*3)+1;//+10;
+		theSpeed = (Math.random()*2)+1;//+10;
 		theClr = ((int)(Math.random()*80)+175);
 		theSize = 5;
 		
@@ -61,13 +61,14 @@ class NormalParticle implements Particle
         
 	}
 	void show() {
+		noStroke();
 		fill(theClr,theClr,255);
 		ellipse(theX,theY,theSize,theSize);
 	}
 	void wrap() {
 		if((theX<0)||(theX>400)||(theY<0)||(theY>400)) {
-			theX = (Math.random()*200)+100;
-			theY = (Math.random()*200)+100;
+			theX = 200;
+			theY = 200;
 		}
 	}
 }
@@ -100,6 +101,8 @@ class OddballParticle implements Particle//uses an interface
 		fill(100,100,255);
 		ellipse(leX,leY,15,15);
 		ellipse(laX,laY,15,15);
+		ellipse(leY,leX,15,15);
+		ellipse(laY,laX,15,15);
 	}
 	void wrap() {
 		if(leY<0) {
